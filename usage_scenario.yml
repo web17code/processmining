@@ -1,0 +1,47 @@
+---
+name: processmining
+author: Raines
+version: 1.0
+description: Test processmining algorithm.
+
+services:
+  Alpha_Container:
+    build:
+      context: .
+  Inductive_Container:
+    build:
+      context: .
+  Heuristics_Container:
+    build:
+      context: .
+  Ilp_Container:
+    build:
+      context: .
+
+
+flow:
+  - name: alpha algorithm
+    container: Alpha_Container
+    commands:
+      - type: console
+        command: python /app/algorithm.py alpha
+        note: Test alpha algorithm
+  - name: inductive algorithm
+    container: Inductive_Container
+    commands:
+      - type: console
+        command: python /app/algorithm.py inductive
+        note: Test inductive algorithm
+  - name: heuristics algorithm
+    container: Heuristics_Container
+    commands:
+      - type: console
+        command: python /app/algorithm.py heuristics
+        note: Test heuristics algorithm
+  - name: ilp algorithm
+    container: Ilp_Container
+    commands:
+      - type: console
+        command: python /app/algorithm.py ilp
+        note: Test ilp algorithm
+
